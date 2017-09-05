@@ -26,4 +26,7 @@ public class Ticket implements Serializable {
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
+    public Concert getConcert() {
+        return concert;
+    }
 }

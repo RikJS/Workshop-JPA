@@ -17,7 +17,9 @@ public class Concert implements Serializable {
     @GeneratedValue
     private Long id;
 
-    private String artist;
+    @ManyToOne
+    @JoinColumn(name = "artist_id", referencedColumnName = "id")
+    private Artist artist;
 
     private String genre;
 
@@ -25,4 +27,15 @@ public class Concert implements Serializable {
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
 
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
 }

@@ -31,10 +31,20 @@ public class Sale implements Serializable {
         @JoinColumn(name = "ticket_concert_id", referencedColumnName = "concert_id")})
     private Ticket ticket;
 
+    @OneToOne
+    @JoinColumns({
+            @JoinColumn(name = "audit_trail_account_id", referencedColumnName = "account_id")
+            ,
+            @JoinColumn(name = "audit_trail_sale_id", referencedColumnName = "sale_id")})
+    private AuditTrail auditTrail;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date sellDate;
 
     @Min(1)
     private int price;
 
+    public Long getId() {
+        return id;
+    }
 }
